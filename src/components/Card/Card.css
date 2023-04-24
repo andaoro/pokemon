@@ -1,0 +1,62 @@
+.Card{
+    width: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    font-family: 'Ysabeau', sans-serif;
+    padding: 2rem 1rem ;
+    background-color: rgb(49, 48, 54);
+    cursor: pointer;
+    position: relative;
+    box-shadow: 5px 5px 10px black;
+    z-index: 2;
+}
+
+.Card >img {
+    max-width: 100px;
+}
+
+.Card > span{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.imagenHover{
+    display: none;
+}
+
+.Card:hover{
+    transform: scale(1.2);
+}
+
+.Card:hover .imagenHover{
+    position: absolute;
+    max-width: 100px;
+    max-height: 100px;
+    height: auto;
+    display: flex;
+}
+
+.Card:hover > img{
+    opacity: 0;
+}
+
+.imagen-oficial{
+    width: 100px;
+    height: auto;
+}
+
+hr {
+    border: none; /* Elimina el borde predeterminado */
+    height: 5px; /* Establece la altura de la línea */
+    background-color: #ffffff; /* Establece el color de fondo de la línea */
+    margin: 20px 0; /* Establece el margen superior e inferior de la línea */
+    width: 100%;
+}
+  
+
+
+
+
+
