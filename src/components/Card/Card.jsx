@@ -1,12 +1,14 @@
 import React from 'react'
 import './Card.css'
 import './Tipos.css'
+import { useNavigate } from 'react-router-dom'
 
 export const Card = ({pokemon}) => {
   const image = pokemon.images.other['official-artwork'].front_default
+  const navigate = useNavigate()
   return (
     <>
-      <div key={pokemon.id} className='Card'>
+      <div key={pokemon.id} className='Card' onClick={()=>{navigate(`/pokemon/${pokemon.name}`)}}>
           <img src={pokemon.images.front_default}/>
           <section className='imagenHover'>
               <img src={image} className='imagen-oficial'/>

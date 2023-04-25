@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {Pokemon as Consulta} from '../../components/API/Pokemon'
 import './Pokemon.css'
 
 export const Pokemon = () => {
   const { name } = useParams()
   const [pokemonData, setpokemonData] = useState(null)
+  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export const Pokemon = () => {
     <div className='PokemonContainer'>
       {pokemonData !== null?(
         <>
-        <h1 className='text-center p-4'>{pokemonData.name}</h1>
+        <h1 className='text-center p-4' onClick={()=>{navigate('/')}}>{pokemonData.name}</h1>
         <div className='infoPokemon'>
           <section>
             <img src={pokemonData.sprites.other['official-artwork'].front_default}/>
@@ -32,7 +33,7 @@ export const Pokemon = () => {
             {
               pokemonData.stats.map((stats)=>(
                 <div>
-                  <span>{stats.stat.name}: {stats.base_stat}</span>
+                  <span key={stats.stat.name}>{stats.stat.name}: {stats.base_stat}</span>
                 </div>
               ))
             }

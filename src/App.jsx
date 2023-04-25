@@ -3,16 +3,17 @@ import { Pokemons } from './components/API/PokemonsApi'
 import { Card } from './components/Card/Card'
 import '../Styles.css'
 import { AiOutlineArrowLeft,AiOutlineArrowRight } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
 
 
 function App() {
   const [dataPokemons, setdataPokemons] = useState([])
   const [ArrowNext, setArrowNext] = useState(null)
   const [ArrowPrev, setArrowPrev] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     Pokemons().then((res) => {
-      console.log(res)
       setArrowNext(res.data.next)
       setArrowPrev(res.data.previous)
       setdataPokemons(res.pokemonsArray)
@@ -22,7 +23,6 @@ function App() {
   }, [])
 
   const SearchNewPokemons = (url)=>{
-    console.log(url)
     Pokemons(url)
     .then((res)=>{
       setArrowNext(res.data.next)
@@ -38,7 +38,7 @@ function App() {
   return (
     <>
       <div className='container-fluid cont'>
-        <h1 className='text-center'>POKEDEX</h1>
+        <h1 className='text-center' onClick={()=>{navigate('/')}}>POKEDEX</h1>
         <hr/>
         <div className='PokemonsContainer'>
           {
